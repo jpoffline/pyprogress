@@ -32,10 +32,11 @@ class BAR():
 		self.makeBar(self.prog)
 		self.prog += 1
 		return self.barStr
+		
 bar = BAR(maxValue = 5)
-print bar.dBar
-for i in xrange(0, bar.maxValue):
-	print bar.getBar()
+
+#for i in xrange(0, bar.maxValue):
+#	print bar.getBar()
  	
 def makeBar(prog, tot):
 	perct = float(prog) / float(tot) * 100
@@ -53,7 +54,7 @@ def getChannelValue(channelID):
 	import random
 	return int(random.random() * 50 )
 
-def dance(nchanels = 10, nsteps = 14):
+def dance(nchanels = 10, nsteps = 14, tsleep = 0.1):
 	
 	import random, sys, time
 
@@ -68,16 +69,16 @@ def dance(nchanels = 10, nsteps = 14):
 
 	for j in xrange(0, nsteps):
 		
-		sys.stdout.write('time = ' + str(j) + '\n' )
+		sys.stdout.write('time = ' + str(j+1) + '\n' )
 
 		for channel in xrange(0, nchanels):
 			value = getChannelValue(channel)
 			sys.stdout.write( str(channel) + ' ' + makeBar(value, maxValue) +'\n' )
 
-		time.sleep(0.1)
+		time.sleep(tsleep)
 		
 
 		if j < nsteps - 1:
 			sys.stdout.write(dele)
 
-#dance()
+dance(nchanels = 10, nsteps = 14, tsleep = 0.1)
